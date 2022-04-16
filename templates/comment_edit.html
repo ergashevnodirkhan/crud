@@ -1,0 +1,16 @@
+{% if not article.comment_set.all %}
+<div class="has-text-centered has-text-grey-light is-size-5 mx-3">
+    No comment yet. Be first to leave comment...
+</div>
+{% else %}
+<p class="has-text-centered is-size-3 mb-6">Comments</p>
+{% for comment in article.comment_set.all %}
+<article class="message is-info">
+    <div class="message-header">
+        Added by {{ comment.user }} at {{ comment.date_added }}
+
+    </div>
+    <div class="message-body">{{ comment.body }}</div>
+</article>
+{% endfor %}
+{% endif %}
